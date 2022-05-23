@@ -31,6 +31,11 @@ export default function MessageList() {
     }).catch(() => {})
   }, [])
 
+  useEffect(() => {
+    var objDiv = document.getElementById("message-list-container");
+    objDiv?.scrollTo(0, objDiv?.scrollHeight)
+  }, [messages])
+
   const renderMessages = () => {
     let i = 0;
     let messageCount = messages.length;
@@ -150,7 +155,7 @@ export default function MessageList() {
 
   return(
     <div className="message-list">
-      <div className="message-list-container">{renderMessages()}</div>
+      <div id="message-list-container" className="message-list-container">{renderMessages()}</div>
 
       <Compose 
         rightItems={[
